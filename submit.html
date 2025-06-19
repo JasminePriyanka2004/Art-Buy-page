@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         .frm{
+            width:400px;
+            height:400px;
+            border-radius: 20px;
+            margin-left:30%;
+            background-color:grey;
+
+         }
+         h2{
+            position: relative;
+            left:20%;
+            top:20px;
+
+         }
+         input{
+            background-color: rgb(105, 104, 104);
+            border: none;
+            width:330px;
+            position: relative;
+            left:20px;
+            top:10px;
+            margin-left:20px;
+            margin-top:10px;
+            height:40px;
+            border-radius: 10px;
+         }
+         button{
+            position: relative;
+            top:50px;
+            left:120px;
+            width:150px;
+            height:40px;
+            background: rgb(105, 104, 104);
+            border:none;
+         }
+         .error{
+            color:red;
+         }
+    </style>
+    
+</head>
+<body>
+    <form name="reg form" class="frm" onsubmit="return validateForm()">
+        <h2>User Registration</h2>
+        <input type="email" name="email" placeholder="email" oninput="clearError('email error')">
+        <div id="emailErr" class="error"></div>
+        <input type="text" name="username" placeholder="name" oninput="clearError('user error')">
+        <div id="userErr" class="error"></div>
+        <input type="text" name="mobile" placeholder="number" oninput="clearError('MobileError')">
+        <div id="MobileErr" class="error"></div>
+        <input type="password" name="password" placeholder="password" oninput="clearError('password error')">
+        <div id="passErr" class="error"></div>
+        <button><a type="sumbit" href="C:\Users\JASMINE\Desktop\foodcourt\foodcourt.html">Submit</a></button>
+
+    </form>
+    <script>
+        function clearError(id){
+            document.getElementById(id).innerHTML="";
+        }
+        function validateForm(){
+            let valid=true;
+            const f=document.forms["reg Form"];
+        
+        function setError(id,msg){
+            document.getElementById(id).innerHTML=msg;
+            valid=false;
+        
+        }
+        const email=f["email"].value.trim()
+        const emailRegex=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\[a-zA-Z]{2,}$/;
+        if(!emailRegex.test(email)){
+            setError("emailErr","enter a valid Email")
+        }
+        const username=f["username"].value.trim()
+        if(!/^[a-Za-Z]{3,23}$/.test(username)){
+            SetError("userErr","username must be 3-25 letters only")
+        }
+        const mobile=f["Mobile"].value.trim();
+        if(!/^\d{10}$/.test(Mobile)){
+            SetError("mobileerr","Enter a valid")
+        }
+        const password=f['password'].value;
+        const passRegex=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-Za-Z0-9!@#$^&*]{8}$/;
+        if(!passRegex.test(password)){
+            Seterror("passErr","min 8 chars");
+        }
+    return valid;
+    }
+
+    </script>
+</body>
+</html>
